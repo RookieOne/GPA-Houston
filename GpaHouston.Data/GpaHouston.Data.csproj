@@ -31,14 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate">
-      <HintPath>..\Dlls\FluentNHibernate\FluentNHibernate.dll</HintPath>
+    <Reference Include="Cecil.FlowAnalysis">
+      <HintPath>..\Dlls\Cecil.FlowAnalysis.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\Dlls\FluentNHibernate\NHibernate.dll</HintPath>
+    <Reference Include="Db4objects.Db4o">
+      <HintPath>..\Dlls\Db4objects.Db4o.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.Linq">
-      <HintPath>..\Dlls\NHibernate.Linq\NHibernate.Linq.dll</HintPath>
+    <Reference Include="Db4objects.Db4o.Linq">
+      <HintPath>..\Dlls\Db4objects.Db4o.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\AvailableDog.cs" />
-    <Compile Include="Maps\AvailableDogMap.cs" />
+    <Compile Include="Dtos\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />

@@ -1,36 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using NHibernate;
-using NHibernate.Linq;
+using Db4objects.Db4o;
+using Db4objects.Db4o.Linq;
+using GpaHouston.Data.Dtos;
 
 namespace GpaHouston.Data.Repositories
 {
-    public class Repository<T> : IRepository<T>
+    public class Repository<T> : IDisposable, IRepository<T> where T : IEntity
     {
-        public Repository()
+        public Repository(IObjectContainer database)
         {
-            var factory = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.Database("GpaHouston")
-                                                                                 .Server("thecoder")
-                                                                                 .TrustedConnection()))
-                .BuildSessionFactory();
-            _session = factory.OpenSession();
+            _database = database;
         }
 
-        ISession _session;
+        readonly IObjectContainer _database;
+
+        public T GetById(int id)
+        {
+            return (from T t in _database
+                    where t.Id == id
+                    select t).FirstOrDefault();
+        }
 
         public IEnumerable<T> GetAll()
         {
-            return from t in _session.Linq<T>()
-                   select t;
+            return _database.Query<T>();
         }
 
         public void Save(T item)
         {
-            throw new NotImplementedException();
+            _database.Store(item);
+            _database.Commit();
+        }
+
+        public void Dispose()
+        {
+            _database.Dispose();
         }
     }
 }

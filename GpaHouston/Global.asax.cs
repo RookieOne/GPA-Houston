@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using GpaHouston.Framework;
 
 namespace GpaHouston
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            // needed to add this because of a Google Chrome issue
+            // http://stackoverflow.com/questions/719678/custom-controller-factory-dependency-injection-structuremap-problems-with-asp
+            routes.IgnoreRoute("{*favicon}", new {favicon = @"(.*/)?favicon.ico(/.*)?"});
 
             routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-            );
-
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new {controller = "Home", action = "Index", id = ""} // Parameter defaults
+                );
         }
 
         protected void Application_Start()
@@ -29,6 +27,9 @@ namespace GpaHouston
             AreaRegistration.RegisterAllAreas();
 
             RegisterRoutes(RouteTable.Routes);
+
+            Bootstrapper.Config();
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }
     }
 }

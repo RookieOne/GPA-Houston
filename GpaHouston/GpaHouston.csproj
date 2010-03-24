@@ -33,7 +33,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cecil.FlowAnalysis">
+      <HintPath>..\Dlls\Cecil.FlowAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Db4objects.Db4o">
+      <HintPath>..\Dlls\Db4objects.Db4o.dll</HintPath>
+    </Reference>
+    <Reference Include="Db4objects.Db4o.Linq">
+      <HintPath>..\Dlls\Db4objects.Db4o.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcContrib">
+      <HintPath>..\Dlls\MvcContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib.FluentHtml">
+      <HintPath>..\Dlls\MvcContrib.FluentHtml.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\Dlls\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -67,15 +85,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AvailableDogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Framework\Bootstrapper.cs" />
+    <Compile Include="Framework\MyAppRegistry.cs" />
+    <Compile Include="Framework\StructureMapControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AvailableDogModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\AvailableDogs\Index.aspx" />
+    <Content Include="Views\AvailableDogs\New.aspx" />
+    <Content Include="Views\Shared\Array.aspx" />
+    <Content Include="Views\Shared\ArrayAddButton.aspx" />
+    <Content Include="Views\Shared\ArrayRemoveButton.aspx" />
+    <Content Include="Views\Shared\Boolean.aspx" />
+    <Content Include="Views\Shared\DateTime.aspx" />
+    <Content Include="Views\Shared\DisplayInline.aspx" />
+    <Content Include="Views\Shared\DisplayLabel.aspx" />
+    <Content Include="Views\Shared\DisplayParagraph.aspx" />
+    <Content Include="Views\Shared\Enum.aspx" />
+    <Content Include="Views\Shared\Form.aspx" />
+    <Content Include="Views\Shared\Guid.aspx" />
+    <Content Include="Views\Shared\Int32.aspx" />
+    <Content Include="Views\Shared\MultilineText.aspx" />
+    <Content Include="Views\Shared\RadioButtons.aspx" />
+    <Content Include="Views\Shared\ReadOnly.aspx" />
+    <Content Include="Views\Shared\String.aspx" />
+    <Content Include="Views\Shared\Submit.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -109,6 +151,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GpaHouston.Data\GpaHouston.Data.csproj">
+      <Project>{87BB3460-B9D2-4BD5-B5D7-E0EC1B34AAFA}</Project>
+      <Name>GpaHouston.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Array.Master" />
+    <Content Include="Views\Shared\Display.Master" />
+    <Content Include="Views\Shared\Field.Master" />
+    <Content Include="Views\Shared\HiddenField.Master" />
+    <Content Include="Views\Shared\Row.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
