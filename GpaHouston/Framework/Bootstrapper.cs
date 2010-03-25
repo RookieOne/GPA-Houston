@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
 using Db4objects.Db4o;
-using GpaHouston.Data.Repositories;
 using StructureMap;
 
 namespace GpaHouston.Framework
@@ -21,7 +20,7 @@ namespace GpaHouston.Framework
 
         public static void Config()
         {
-            ObjectFactory.Configure(Configure);
+            ObjectFactory.Configure(Configure);            
         }
 
         static void Configure(ConfigurationExpression x)

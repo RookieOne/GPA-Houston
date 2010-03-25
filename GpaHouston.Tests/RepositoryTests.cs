@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using Db4objects.Db4o;
-using GpaHouston.Data.Dtos;
-using GpaHouston.Data.Repositories;
+using GpaHouston.Framework;
 using NUnit.Framework;
 
-namespace GpaHouston.Data.Tests
+namespace GpaHouston.Tests
 {
     [TestFixture]
     public class RepositoryTests
@@ -47,6 +46,21 @@ namespace GpaHouston.Data.Tests
         }
 
         [Test]
+        public void new_save_should_generate_id()
+        {
+            using (var container = GetContainer())
+            {
+                var repository = new Repository<Foo>(container);
+
+                var foo = new Foo {Bar = "Test"};
+
+                repository.Save(foo);
+
+                foo.Id.ShouldNotBe(0);
+            }
+        }
+
+        [Test]
         public void save_should_store_object_in_container()
         {
             using (var container = GetContainer())
@@ -66,6 +80,6 @@ namespace GpaHouston.Data.Tests
     internal class Foo : IEntity
     {
         public string Bar { get; set; }
-        public int Id { get; set; }
+        public long Id { get; set; }
     }
 }

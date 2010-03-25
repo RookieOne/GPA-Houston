@@ -12,7 +12,18 @@
 
         <div id="header">
             <div id="title">
-                <h1>My MVC Application</h1>
+                <table>
+                    <tr>
+                        <td><h2>GPA Houston</h2></td>
+
+                        <td>
+                            PO Box 741176 <br />
+Houston, TX 77274 <br />
+713.667.3804<br />
+Emergency: 713.866.4466<br />
+                        </td>
+                    </tr>                    
+                </table>
             </div>
               
             <div id="logindisplay">
@@ -25,6 +36,8 @@
                     <li><%= Html.ActionLink("Home", "Index", "Home")%></li>
                     <li><%= Html.ActionLink("About", "About", "Home")%></li>
                     <li><%= Html.ActionLink("Available Dogs", "Index", "AvailableDogs")%></li>
+                    <li><%= Html.ActionLink("Events", "Index", "Events")%></li>
+                    <li><%= Html.ActionLink("News", "Index", "News")%></li>
                 </ul>
             
             </div>

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\Dlls\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Cecil.FlowAnalysis">
       <HintPath>..\Dlls\Cecil.FlowAnalysis.dll</HintPath>
     </Reference>
@@ -86,21 +89,34 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AvailableDogsController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Framework\Bootstrapper.cs" />
+    <Compile Include="Controllers\CrudController.cs" />
+    <Compile Include="Framework\IEntity.cs" />
+    <Compile Include="Framework\IRepository.cs" />
     <Compile Include="Framework\MyAppRegistry.cs" />
+    <Compile Include="Framework\Repository.cs" />
     <Compile Include="Framework\StructureMapControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\AvailableDogModel.cs" />
+    <Compile Include="Models\Annoucement.cs" />
+    <Compile Include="Models\AvailableDog.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\AvailableDogs\Edit.aspx" />
     <Content Include="Views\AvailableDogs\Index.aspx" />
-    <Content Include="Views\AvailableDogs\New.aspx" />
+    <Content Include="Views\Events\Edit.aspx" />
+    <Content Include="Views\Events\Index.aspx" />
+    <Content Include="Views\News\Edit.aspx" />
+    <Content Include="Views\News\Index.aspx" />
     <Content Include="Views\Shared\Array.aspx" />
     <Content Include="Views\Shared\ArrayAddButton.aspx" />
     <Content Include="Views\Shared\ArrayRemoveButton.aspx" />
@@ -151,12 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GpaHouston.Data\GpaHouston.Data.csproj">
-      <Project>{87BB3460-B9D2-4BD5-B5D7-E0EC1B34AAFA}</Project>
-      <Name>GpaHouston.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Array.Master" />

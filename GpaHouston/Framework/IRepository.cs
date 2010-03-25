@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using GpaHouston.Data.Dtos;
 
-namespace GpaHouston.Data.Repositories
+namespace GpaHouston.Framework
 {
     public interface IRepository<T> where T : IEntity
     {
-        T GetById(int id);
+        T GetById(long id);
         IEnumerable<T> GetAll();
         void Save(T item);
     }

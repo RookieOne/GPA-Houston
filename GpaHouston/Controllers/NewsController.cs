@@ -2,7 +2,7 @@
 
 namespace GpaHouston.Controllers
 {
-    public class AvailableDogsController : CrudController<AvailableDog>
+    public class NewsController : CrudController<News>
     {
     }
 }

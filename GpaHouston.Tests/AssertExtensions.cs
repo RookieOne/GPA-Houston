@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace GpaHouston.Data.Tests
+namespace GpaHouston.Tests
 {
     public static class AssertExtensions
     {
